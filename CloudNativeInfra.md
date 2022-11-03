@@ -89,5 +89,6 @@ shell#> kubectl get all,ingress -n {namespace}.
 ![resource](https://user-images.githubusercontent.com/117291027/199703560-e40b4af5-5253-428f-9a79-1a7194e3b93c.png)
 
 
+
 shell#> curl https://{exam_url}.  
 ![curl](https://user-images.githubusercontent.com/117291027/199703550-9e937b61-43da-467e-82d2-0be64d4fc8ca.png)
