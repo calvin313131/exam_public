@@ -1,4 +1,4 @@
-# Deployment 매니페스트 작성
+### Deployment 매니페스트
 
 ```yaml
 
@@ -11,6 +11,8 @@ metadata:
     app: web
     service: heesoo
     env: prod
+  annotation: 
+    env: dev
 spec:
   replicas: 3
   revisionHistoryLimit: 3
@@ -27,6 +29,7 @@ spec:
         service: heesoo
         env: prod
     spec:
+      serviceaccountName: imagedn
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -35,7 +38,7 @@ spec:
                   - key: app
                     operator: In
                     values:
-                      - edgehb-web
+                      - web
               topologyKey: kubernetes.io/hostname
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -47,7 +50,7 @@ spec:
                       - worker-node
       containers:
       - name: web
-        image: docker.io/chulbori/nginx:20210507
+        image: kurlycorp.kr.dev/nginx:latest
         resources:
           requests:
             memory: "300Mi"
@@ -79,4 +82,10 @@ spec:
               - /bin/sh
               - -c
               - sleep 50
-      serviceaccountName: heesoo
+```
+
+### 정상동작 확인 방법 및 결과
+shell#> kubectl get all,ingress -n {namespace}
+
+
+shell#> curl https://{exam_url}
