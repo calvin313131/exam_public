@@ -86,6 +86,6 @@ spec:
 
 ### 정상동작 확인 방법 및 결과
 shell#> kubectl get all,ingress -n {namespace}
-
+![curl](https://user-images.githubusercontent.com/117291027/199703550-9e937b61-43da-467e-82d2-0be64d4fc8ca.png)
 
 shell#> curl https://{exam_url}
